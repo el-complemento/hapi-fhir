@@ -64,7 +64,7 @@ public class AppProperties {
   private Long reuse_cached_search_results_millis = 60000L;
   private String server_address = null;
   private EncodingEnum default_encoding = EncodingEnum.JSON;
-  private FhirVersionEnum fhir_version = FhirVersionEnum.R4;
+  private FhirVersionEnum fhir_version = FhirVersionEnum.R5;
   private ClientIdStrategyEnum client_id_strategy = ClientIdStrategyEnum.ALPHANUMERIC;
   private IdStrategyEnum server_id_strategy = null;
   private List<String> supported_resource_types = new ArrayList<>();

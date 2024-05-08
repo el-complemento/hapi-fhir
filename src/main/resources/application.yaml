@@ -12,17 +12,17 @@ management:
 spring:
   main:
     allow-circular-references: true
-    #allow-bean-definition-overriding: true
+    allow-bean-definition-overriding: true
   flyway:
     enabled: false
     baselineOnMigrate: true
     fail-on-missing-locations: false
   datasource:
     #url: 'jdbc:h2:file:./target/database/h2'
-    url: jdbc:h2:mem:test_mem
-    username: sa
-    password: null
-    driverClassName: org.h2.Driver
+    url: 'jdbc:postgresql://keycloak-br.cp846sgu6llt.sa-east-1.rds.amazonaws.com:5432/hapir5'
+    username: postgres
+    password: hfuV58zeinzASstz3NcS
+    driverClassName: org.postgresql.Driver
     max-active: 15
 
     # database connection pool size
@@ -36,7 +36,7 @@ spring:
       #Hibernate dialect is automatically detected except Postgres and H2.
       #If using H2, then supply the value of ca.uhn.fhir.jpa.model.dialect.HapiFhirH2Dialect
       #If using postgres, then supply the value of ca.uhn.fhir.jpa.model.dialect.HapiFhirPostgres94Dialect
-      hibernate.dialect: ca.uhn.fhir.jpa.model.dialect.HapiFhirH2Dialect
+      hibernate.dialect: ca.uhn.fhir.jpa.model.dialect.HapiFhirPostgres94Dialect
   #      hibernate.hbm2ddl.auto: update
   #      hibernate.jdbc.batch_size: 20
   #      hibernate.cache.use_query_cache: false
@@ -69,7 +69,7 @@ hapi:
     ### This enables the swagger-ui at /fhir/swagger-ui/index.html as well as the /fhir/api-docs (see https://hapifhir.io/hapi-fhir/docs/server_plain/openapi.html)
     openapi_enabled: true
     ### This is the FHIR version. Choose between, DSTU2, DSTU3, R4 or R5
-    fhir_version: R4
+    fhir_version: R5
     ### Flag is false by default. This flag enables runtime installation of IG's.
     ig_runtime_upload_enabled: false
     ### This flag when enabled to true, will avail evaluate measure operations from CR Module.
@@ -105,6 +105,7 @@ hapi:
     #    supported_resource_types:
     #      - Patient
     #      - Observation
+
     ##################################################
     # Allowed Bundle Types for persistence (defaults are: COLLECTION,DOCUMENT,MESSAGE)
     ##################################################
@@ -118,7 +119,7 @@ hapi:
     ### tells the server to automatically append the current version of the target resource to references at these paths
     #    auto_version_reference_at_paths: Device.patient, Device.location, Device.parent, DeviceMetric.parent, DeviceMetric.source, Observation.device, Observation.subject
     #    ips_enabled: false
-    #    default_encoding: JSON
+    default_encoding: JSON
     #    default_pretty_print: true
     #    default_page_size: 20
     #    delete_expunge_enabled: true
